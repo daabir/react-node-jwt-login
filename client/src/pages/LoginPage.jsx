@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 function LoginPage() {
     const initialValues = {
@@ -41,7 +42,8 @@ function LoginPage() {
                 }}
             ></input>
             <label htmlFor='showpwd'>Show Password</label><br></br>
-            <button type='submit'>Login</button>
+            <button type='submit'>Login</button><br></br>
+            <p>Don't have an account? <Link to={'/register'}>Register Here</Link></p>
         </form>
     </div>
   )
