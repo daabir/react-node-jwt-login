@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 function LoginPage() {
     const initialValues = {
@@ -40,7 +41,7 @@ function LoginPage() {
                 }}
             ></input>
             <label htmlFor='showpwd'>Show Password</label><br></br>
-            <button>Login</button>
+            <button type='submit'>Login</button>
         </form>
     </div>
   )
