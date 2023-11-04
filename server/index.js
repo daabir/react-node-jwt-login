@@ -60,7 +60,7 @@ app.post('/refreshToken', (req,res) => {
                 const newRefreshToken = generateRefreshToken(user);
                 refreshTokens.push(newRefreshToken);
                 res.send({
-                    accessToken: newAccessToken;
+                    accessToken: newAccessToken,
                     refreshToken: newRefreshToken
                 })
             }
