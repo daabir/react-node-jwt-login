@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function RegisterPage() {
+  const navigate = useNavigate();
   const initialValues={
     username:'',
     password:'',
@@ -18,6 +19,15 @@ function RegisterPage() {
   function submitData(e){
     e.preventDefault();
     console.log(userData)
+    axios.post("http://localhost:4000/register",{userData:userData}).then((response)=>{
+      if(response.message == 'success'){
+        alert("Registration successful");
+        navigate('/login');
+      } else {
+        alert(response.message);
+        window.location.reload(false);
+      }
+    })
   }
   return (
     <div>
