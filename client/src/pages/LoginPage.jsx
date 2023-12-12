@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import logIn from '../redux/actions/actions'
 
 function LoginPage() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const initialValues = {
         userId: '',
         password: ''
@@ -12,7 +16,14 @@ function LoginPage() {
 
     function submitData(e){
         e.preventDefault();
-        console.log(loginData)
+        axios.post("http://localhost:4000/login", {userData:loginData}).then((response)=>{
+            if(response.message){
+                alert(response.message);
+            }else{
+                dispatch(logIn(response.data));
+                navigate("/home");
+            }
+        })
     }
   return (
     <div>
