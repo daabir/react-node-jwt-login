@@ -2,8 +2,16 @@ export const logIn = (data) => {
     return { type: "LOGIN", payload: data}
 }
 
+export const refreshTkn = ({accessToken, refreshToken}) => {
+    return { type: "REFRESH", payload: {accessToken, refreshToken}}
+}
+
+export const loggedIn = (data) => {
+    return { type: "LOGGEDIN", payload: data}
+}
+
 export const logOut = (data) => {
-    return { type: "LOGOUT", payload: data}
+    return { type: "LOGGEDOUT", payload: data}
 }
 
 export const storeData = (data) => {
