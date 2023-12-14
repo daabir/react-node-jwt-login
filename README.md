@@ -49,8 +49,7 @@ npm start
 
 ## Important Notes:
 
-**Don't forget to setup your own .env files wherever necessary**  
-
-**Please note that the CSS code is not going to be my focus in this repo.(You can contribute to css if you want)**  
-**If you come across an issue and know the fix, please contribute to the repo.**  
-**If you come across an issue and don't know how to fix it, feel free to get in touch.**  
+- **Don't forget to setup your own .env files wherever necessary**  
+- **Please note that the CSS code is not going to be my focus in this repo.(You can contribute to css if you want)**  
+- **If you come across an issue and know the fix, please contribute to the repo.**  
+- **If you come across an issue and don't know how to fix it, feel free to get in touch.**  
