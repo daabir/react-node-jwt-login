@@ -2,24 +2,28 @@
 
 **I have created this repo to help you understand how an efficient and simple token-based-login-system should work**
 
-If you go through the code you will understand how to setup:  
-    reactjs,  
-    redux and react-redux(for state management),  
-    jwt,  
-    axios,  
-    axios interceptors,  
-    error handling  
-and on the backend or server-side, you will know how to setup:  
-    nodejs,  
-    expressjs,  
-    cors,  
-    database queries and schemas(in this case mongo),  
-    endpoints,  
-    jwt,  
-    error handling,  
-    and maybe more.  
+If you go through the code, you will understand how to set up:
 
-If possible I might add some more things in the future.  
+- ReactJS
+- Redux and React-Redux (for state management)
+- JWT
+- Axios
+- Axios interceptors
+- Error handling
+
+And on the backend or server-side, you will know how to set up:
+
+- Node.js
+- Express.js
+- CORS
+- Database queries and schemas (in this case, MongoDB)
+- Endpoints
+- JWT
+- Error handling
+- And maybe more.
+
+If possible, I might add some more things in the future.
+  
 
 **Please note that the CSS code is not going to be my focus in this repo.(You can contribute to css if you want)**  
 **If you come across an issue and know the fix, please contribute to the repo.**  
