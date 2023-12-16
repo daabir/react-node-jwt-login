@@ -2,7 +2,7 @@
 
 **I have created this repo to help you understand how an efficient and simple token-based-login-system should work**
 
-If you go through the code, you will understand how to set up:
+Once you go through the code, you will understand how to set up:
 
 - ReactJS
 - Redux and React-Redux (for state management)
