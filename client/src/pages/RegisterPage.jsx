@@ -83,14 +83,14 @@ function RegisterPage() {
                 setUserData({...userData, phone:e.target.value})
               }}
             ></input><br></br>
-            <label htmlFor='isAdmin'>Are you an admin?</label>
+            {/* <label htmlFor='isAdmin'>Are you an admin?</label>
             <select 
               name='isAdmin' 
               onChange={(e)=>{setUserData({...userData,isAdmin:e.target.value})}}
             >
               <option value={true}>Yes</option>
               <option value={false}>No</option>
-            </select><br></br>
+            </select><br></br> */}
             <input name='showPass' type='checkbox' onChange={()=>{setShowPwd(!showPwd)}}></input>
             <label htmlFor='showPass'>Show Passwords</label><br></br>
             <button type='submit'>Register</button><br></br>
