@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import customAxiosInstance from '../utils/JwtInterceptor';
+
 
 function Home() {
+  const axiosJWT = customAxiosInstance();
+  
   return (
     <div>
         HomePage. We will fetch some data later here.
