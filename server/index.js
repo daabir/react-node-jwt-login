@@ -80,17 +80,17 @@ app.post('/refreshToken', (req,res) => {
 
 app.post('/login', async (req,res)=>{
     const { userData } = req.body;
-    // const user = await User.findOne({userData.username})
-    // if(!user){
-    //     res.send({message:"User does not exist!"});
-    // }else if(user.password !== password){
-    //     res.send({message: "Auth failed"});
-    // }else {
-    //     const accessToken = generateAccessToken(user);
-    //     const refreshToken = generateRefreshToken(user);
-    //     refreshTokens.push(refreshToken);
-    //     res.send([{username: user?.username, isAdmin: user?.isAdmin, accessToken, refreshToken}]);
-    // }
+    const user = await User.findOne({username:userData?.username})
+    if(!user){
+        res.send({message:"User does not exist!"});
+    }else if(userData?.password !== user.password){
+        res.send({message: "Auth failed"});
+    }else {
+        const accessToken = generateAccessToken(user);
+        const refreshToken = generateRefreshToken(user);
+        refreshTokens.push(refreshToken);
+        res.send([{username: user?.username, isAdmin: user?.isAdmin, accessToken, refreshToken}]);
+    }
 });
 
 
@@ -101,8 +101,15 @@ app.post('/logout', verify, (req,res)=>{
 })
 
 
-app.post('/register', (req,res)=>{
-    const { userData } = req.body;
+app.post('/register', async (req,res)=>{
+    const newUser = new User(req.body);
+    try{
+        const saveUser = await newUser.save();
+        res.send(new Response("Registration successful",{status: 200}))
+    } catch(e){
+        res.send(new Response("Registration failed",{status:501}))
+        console.error(e);
+    }
 });
 
 app.get('/home', verify, (req,res)=>{
