@@ -11,8 +11,8 @@ app.use(cors());
 dotenv.config();
 
 const refreshTokens = [];
-const secret = "thisShouldBeYourSecretString"
-const refSecret = "thisWillbeYourRefreshString"
+const secret = process.env.ACCESS_SECRET
+const refSecret = process.env.REFRESH_SECRET
 
 const connect = async() => {
     try{
