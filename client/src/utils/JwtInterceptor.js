@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import jwt_decode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { refreshTkn } from '../redux/actions/actions';
 
 const customAxiosInstance = () => {
@@ -13,7 +13,7 @@ const customAxiosInstance = () => {
     axiosJWT.interceptors.request.use(
         async (config) => {
             let currentDate = new Date();
-            const decodedToken = jwt_decode(accesstoken);
+            const decodedToken = jwtDecode(accesstoken);
             if(decodedToken.exp * 1000 < currentDate.getTime()){
                 const data = await refreshToken();
                 config.headers['authtoken'] = 'Bearer ' + data.accessToken;

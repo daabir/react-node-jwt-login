@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import logIn from '../redux/actions/actions'
+import { logIn } from '../redux/actions/actions'
 
 function LoginPage() {
     const dispatch = useDispatch();
