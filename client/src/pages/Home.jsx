@@ -10,7 +10,7 @@ function Home() {
   const dispatch = useDispatch();
   function logOutUser(e){
     e.preventDefault();
-    dispatch(logOut())
+    dispatch(logOut());
   }
   return (
     <div>
