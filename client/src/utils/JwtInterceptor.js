@@ -7,8 +7,8 @@ const customAxiosInstance = () => {
     const axiosJWT = axios.create();
     const dispatch = useDispatch();
     const user = useSelector((state)=>state.loginreducer);
-    var accesstoken = user[0].accessToken;
-    var refreshtoken = user[0].refreshToken;
+    var accesstoken = user.accessToken;
+    var refreshtoken = user.refreshToken;
 
     axiosJWT.interceptors.request.use(
         async (config) => {
