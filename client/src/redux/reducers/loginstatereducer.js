@@ -5,7 +5,7 @@ const loginstatereducer = (state = initialState, action) => {
         case "LOGGEDIN":
             return action.payload;
         case "LOGGEDOUT":
-            return action.payload;
+            return initialState;
         default:
             return state;
     }

@@ -10,8 +10,8 @@ export const loggedIn = (data) => {
     return { type: "LOGGEDIN", payload: data}
 }
 
-export const logOut = (data) => {
-    return { type: "LOGGEDOUT", payload: data}
+export const logOut = () => {
+    return { type: "LOGGEDOUT"}
 }
 
 export const storeData = (data) => {
