@@ -80,7 +80,8 @@ app.post('/refreshToken', (req,res) => {
 
 app.post('/login', async (req,res)=>{
     const { userData } = req.body;
-    const user = await User.findOne({username:userData?.username})
+    // console.log(userData)
+    const user = await User.findOne({username:userData?.userId})
     if(!user){
         res.send({message:"User does not exist!"});
     }else if(userData?.password !== user.password){
