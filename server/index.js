@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
 
-const refreshTokens = [];
+let refreshTokens = [];
 const secret = process.env.ACCESS_SECRET
 const refSecret = process.env.REFRESH_SECRET
 
@@ -24,7 +24,7 @@ const connect = async() => {
 }
 
 const verify = (req, res, next) => {
-    const authHeader = req.headers.token;
+    const authHeader = req.headers.authtoken;
     if(authHeader){
         const token = authHeader.split(' ')[1];
         jwt.verify(token, secret, (err, user)=>{
@@ -98,7 +98,7 @@ app.post('/login', async (req,res)=>{
 app.post('/logout', verify, (req,res)=>{
     const refreshToken = req.body.token;
     refreshTokens = refreshTokens.filter((token)=>token !== refreshToken);
-    res.send({message:"Logout success"})
+    res.send(new Response ("Logout success", {status : 200}))
 })
 
 

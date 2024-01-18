@@ -10,6 +10,8 @@ const loginreducer = (state = initialState, action) => {
                 accessToken: action.payload.accessToken,
                 refreshToken: action.payload.refreshToken
             }));
+        case "LOGGEDOUT":
+            return initialState
         default:
             return state;
     }

@@ -35,7 +35,7 @@ function LoginPage() {
     return (
         <div>
             <h3>LoginPage</h3>
-            <form>
+            <form onSubmit={(e) => { submitData(e) }}>
                 <label htmlFor='userid'>User ID:</label><br></br>
                 <input
                     type='text'
@@ -60,7 +60,7 @@ function LoginPage() {
                     }}
                 ></input>
                 <label htmlFor='showpwd'>Show Password</label><br></br>
-                <button onClick={(e) => { submitData(e) }}>Login</button><br></br>
+                <button type='submit'>Login</button><br></br>
                 <p>Don't have an account? <Link to={'/register'}>Register Here</Link></p>
             </form>
         </div>
