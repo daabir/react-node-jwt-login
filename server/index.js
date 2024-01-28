@@ -30,7 +30,7 @@ const verify = (req, res, next) => {
         const token = authHeader.split(' ')[1];
         jwt.verify(token, secret, (err, user)=>{
             if(err){
-                res.send({ message: "Access Forbidden!" });
+                res.send({ message: "Access Forbidden!", error: err.message });
             } else {
                 req.user = user;
                 next();
@@ -111,14 +111,40 @@ app.post('/register', async (req,res)=>{
     }
 });
 
-app.get('/home', verify, async (req,res)=>{
+app.post('/home', verify, async (req,res)=>{
     try{
-        const loadData = await HomeData.find();
+        const loadData = await HomeData.find({userId: req.body.userId});
         res.send(loadData);
     } catch(err){
         res.send({status:500, message:err.message })
     }
 });
+
+
+app.post('/createData', verify, async (req,res)=>{
+    const newData = new HomeData(req.body);
+    try{
+        const savedData = await newData.save()
+        res.send({status: 200, message: "Success", data: savedData})
+    }catch(err){
+        res.send({status: 500, message: err.message})
+    }
+})
+
+
+app.post('/updateData', verify, async (req,res)=>{
+    const { userId, data } = req.body;
+    try{
+        const updatedData = await HomeData.findByIdAndUpdate(
+            userId,
+            { data },
+            {new: true}
+        )
+        res.send({status: 200, message: "Success", data: updatedData})
+    }catch(err){
+        res.send({status: 500, message: err.message})
+    }
+})
 
 app.listen(4000, () => {
     console.log("Listening at 4000")

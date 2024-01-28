@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
 const DataSchema = new mongoose.Schema({
-    message: {
+    userId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    data: {
         type: String
     }
 }

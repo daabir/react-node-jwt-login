@@ -29,7 +29,6 @@ const customAxiosInstance = () => {
     const refreshToken = async () =>{
         try {
             const res = await axios.post("http://localhost:4000/refreshToken", { token: refreshtoken });
-            console.log(res)
             refreshtoken = res.data.refreshToken;
             accesstoken = res.data.accessToken;
             dispatch(refreshTkn({accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}));
