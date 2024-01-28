@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require("./models/User");
+const HomeData = require("./models/HomeData");
 
 app.use(express.json());
 app.use(cors());
@@ -42,7 +43,7 @@ const verify = (req, res, next) => {
 
 const generateAccessToken = (user) => {
     return jwt.sign({id : user.id, isAdmin : user.isAdmin}, secret, {
-        expiresIn: "15m"
+        expiresIn: "10s"
     })
 }
 
@@ -50,9 +51,6 @@ const generateRefreshToken = (user) => {
     return jwt.sign({id : user.id, isAdmin : user.isAdmin}, refSecret);
 }
 
-app.get('/',(req,res) => {
-    res.send("Homepage for testing.")
-});
 
 app.post('/refreshToken', (req,res) => {
     const refreshToken = req.body.token;
@@ -113,8 +111,13 @@ app.post('/register', async (req,res)=>{
     }
 });
 
-app.get('/home', verify, (req,res)=>{
-    
+app.get('/home', verify, async (req,res)=>{
+    try{
+        const loadData = await HomeData.find();
+        res.send(loadData);
+    } catch(err){
+        res.send({status:500, message:err.message })
+    }
 });
 
 app.listen(4000, () => {

@@ -7,8 +7,8 @@ const customAxiosInstance = () => {
     const axiosJWT = axios.create();
     const dispatch = useDispatch();
     const user = useSelector((state)=>state.loginreducer);
-    var accesstoken = user.accessToken;
-    var refreshtoken = user.refreshToken;
+    var accesstoken = user[0].accessToken;
+    var refreshtoken = user[0].refreshToken;
 
     axiosJWT.interceptors.request.use(
         async (config) => {
@@ -28,7 +28,8 @@ const customAxiosInstance = () => {
 
     const refreshToken = async () =>{
         try {
-            const res = await axios.post("http://localhost:4000/refresh", { token: refreshtoken });
+            const res = await axios.post("http://localhost:4000/refreshToken", { token: refreshtoken });
+            console.log(res)
             refreshtoken = res.data.refreshToken;
             accesstoken = res.data.accessToken;
             dispatch(refreshTkn({accessToken: res.data.accessToken, refreshToken: res.data.refreshToken}));

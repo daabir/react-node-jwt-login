@@ -23,7 +23,7 @@ function LoginPage() {
                     alert(response.data.message);
                 } else {
                     // console.log(response)
-                    dispatch(logIn(response.data[0]));
+                    dispatch(logIn(response.data));
                     dispatch(loggedIn(true));
                     navigate("/home");
                 }
