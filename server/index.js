@@ -135,9 +135,9 @@ app.post('/createData', verify, async (req,res)=>{
 app.post('/updateData', verify, async (req,res)=>{
     const { userId, data } = req.body;
     try{
-        const updatedData = await HomeData.findByIdAndUpdate(
-            userId,
-            { data },
+        const updatedData = await HomeData.findOneAndUpdate(
+            {userId: userId},
+            { data: data },
             {new: true}
         )
         res.send({status: 200, message: "Success", data: updatedData})
