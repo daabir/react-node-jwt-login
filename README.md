@@ -10,6 +10,7 @@ Once you go through the code, you will understand how to set up:
 - Axios
 - Axios interceptors
 - Error handling
+- Conditional Rendering
 
 And on the backend or server-side, you will know how to set up:
 
