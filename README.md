@@ -32,7 +32,7 @@ If possible, I might add some more things in the future.
 Clone the repository by running the following command:  
 
 ```
-git clone <>
+git clone https://github.com/daabir/react-node-jwt-login.git
 ```
 
 Open the 'client' directory in your terminal and run these commands:  
